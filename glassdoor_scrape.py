@@ -3,8 +3,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import NoSuchElementException
 chrome_options = Options()
-chrome_options.set_headless(headless=True) # decides whether to show the chrome window while executing web search
+chrome_options.set_headless(headless=False) # decides whether to show the chrome window while executing web search
 
 # parsing web pages
 from bs4 import BeautifulSoup
@@ -24,11 +25,13 @@ import sys
 
 class glassdoor_scraper():
     
-    def __init__(self, job_search_terms, location_search_terms, all_pages=True, num_pages):
+    def __init__(self, job_search_terms, location_search_terms, num_pages=1, all_pages=True):
         
         # main parameters of the web scrape
         self.job_search_terms = job_search_terms
         self.location_search_terms = location_search_terms
+        self.num_pages = num_pages
+        self.all_pages = all_pages
         
         assert(len(job_search_terms) == len(location_search_terms)) # has to be equal
         
@@ -37,11 +40,6 @@ class glassdoor_scraper():
         self.count_jobs = [] # total count of jobs from all scraper threads
         self.df_jobs = pd.DataFrame() # placeholder for a Pandas DataFrame
         
-        # how many pages to scrape?
-        if all_pages:
-            self.num_pages = 1
-        else:
-            self.num_pages = num_pages
         
         # for storing threads
         self.job_threads = [] # hold job scraping threads
@@ -106,6 +104,20 @@ class glassdoor_scraper():
 
             jobs = browser.find_elements_by_class_name('jl')
             
+            if len(jobs) < 20:
+                
+                for i in range(5):
+                    browser.refresh()
+                    time.sleep(3)
+                    jobs = browser.find_elements_by_class_name('jl')    
+                    if len(jobs) > 20:
+                        break;
+                else:
+                    
+                    break;
+                
+                
+            
             # get all jobs in a single page
             for job in jobs:
                 try: 
@@ -126,26 +138,27 @@ class glassdoor_scraper():
                         
                     job_count += 1
                 except:
-                    print("Issue clicking on job.")
                     job_failures += 1
 
 
             if pages_searched % 10 == 0:
                 print("{0} - {1}: mined {2} jobs".format(search_term, location_term, job_count))
 
-            if not all_pages:
+            if not self.all_pages:
                 page_count += 1
                 
             # get the next page of search results
-            tries = 0
-            for tries in range(5):
+            if
+            for i in range(5):
                 try:
-                    next_page = browser.find_element_by_class_name('next')
-                    next_page.click()
-                    break;
+                    if browser.find_element_by_class_name('next').find_element_by_class_name('disabled'):
+                        continue;
+                    else:
+                        next_page = browser.find_element_by_class_name('next')
+                        next_page.click()
+                        break;
                 except:
                     time.sleep(2)
-                    pass
             else:
                 break;
 
@@ -173,13 +186,12 @@ class glassdoor_scraper():
         for job in job_pages:
 
             soup = BeautifulSoup(job, 'html.parser')
-
-            link = soup.find('div', class_="regToApplyArrowBoxContainer").find('a', href=True)['href']
-            if link:
+            
+            try:
+                link = soup.find('div', class_="regToApplyArrowBoxContainer").find('a', href=True)['href']
                 data_dict["link"].append("https://www.glassdoor.com{}".format(link))
-            else:
+            except:
                 data_dict["link"].append("N/A")
-
 
             try:
                 location = soup.find('div', class_="padLt padBot").findAll('span')
@@ -190,23 +202,22 @@ class glassdoor_scraper():
             except:
                 data_dict["location"].append("N/A")
 
-                
-            company = soup.find('a', class_="plain strong empDetailsLink")
-            if company:    
+            try:
+                company = soup.find('a', class_="plain strong empDetailsLink")  
                 data_dict["company"].append(company.text.strip())
-            else:
+            except:
                 data_dict["company"].append("N/A")
 
-            position = soup.find('h1', class_="noMargTop noMargBot strong")
-            if position:
+            try:
+                position = soup.find('h1', class_="noMargTop noMargBot strong")
                 data_dict["position"].append(position.text.strip())
-            else:
+            except:
                 data_dict["position"].append("N/A")
 
-            description = soup.find('div', id='JobDescriptionContainer')
-            if description:
+            try:
+                description = soup.find('div', id='JobDescriptionContainer')
                 data_dict["description"].append(description.text.strip())
-            else:
+            except:
                 data_dict["description"].append("N/A")
 
             count += 1
