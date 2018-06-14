@@ -75,151 +75,109 @@ class glassdoor_scraper():
     ######################################
     def get_glassdoor_jobs(self, search_term, location_term):
 
-        completed = False
+
         browser = webdriver.Chrome(chrome_options=chrome_options)
 
-        while not completed:
-            notification_blocked = False
-            pages_searched = 0
-            job_count = 0
-            job_failures = 0
-            job_pages = []
-            page_count = 0
 
-            # open website
-            browser.get('https://www.glassdoor.com/index.htm')
-            time.sleep(3)
-            # Enter search parameters
-            search_job = browser.find_element_by_name('sc.keyword')
-            search_job.clear()
-            time.sleep(2)
-            search_job.send_keys(search_term)
-            location = browser.find_element_by_id('LocationSearch')
-            location.clear()
-            time.sleep(2)
-            location.send_keys(location_term)
-            time.sleep(2)
-            location.send_keys(Keys.RETURN)
+        notification_blocked = False
+        pages_searched = 0
+        job_count = 0
+        job_failures = 0
+        job_pages = []
+        page_count = 0
 
-            # get data from website
-            while page_count < self.num_pages:
+        # open website
+        browser.get('https://www.glassdoor.com/index.htm')
+        time.sleep(6)
+        # Enter search parameters
+        search_job = browser.find_element_by_name('sc.keyword')
+        search_job.clear()
+        time.sleep(2)
+        search_job.send_keys(search_term)
+        location = browser.find_element_by_id('LocationSearch')
+        location.clear()
+        time.sleep(2)
+        location.send_keys(location_term)
+        time.sleep(2)
+        location.send_keys(Keys.RETURN)
 
-                pages_searched += 1
+        # get data from website
+        while page_count < self.num_pages:
 
-                time.sleep(3) # wait for new page to load
+            pages_searched += 1
 
-                try:
+            time.sleep(3) # wait for new page to load
+
+            try:
+                jobs = browser.find_elements_by_class_name('jl')
+            except:
+                for i in range(5):
+                    browser.refresh()
+                    time.sleep(3)
+                    print("Problem getting jobs from page.")
                     jobs = browser.find_elements_by_class_name('jl')
-                except:
-                    for i in range(5):
-                        browser.refresh()
-                        time.sleep(3)
-                        print("Problem getting jobs from page.")
-                        jobs = browser.find_elements_by_class_name('jl')
-                        if len(jobs) > 1:
-                            break;
-                    else:
-                        print("{0} - {1}: Couldn't find any more jobs on page.".format(search_term, location_term))
-                        completed = True
+                    if len(jobs) > 1:
                         break;
-
-                ##########################################################################################################################
-                # make sure you have the right search result
-                no_keyword = False
-                first_write = True
-                for i in range(5):
-                    try:
-                        keyword = browser.find_element_by_name('sc.keyword').get_attribute('value')
-                        if first_write:
-                            first_write = False
-                            with self.lock:
-                                with open('./test.txt', 'a') as file:
-                                    file.write("{0} - {1}: '{2}'".format(search_term, location_term, keyword))
-                                    file.write("\n")
-                        if (keyword.lower() == search_term.lower()):
-                            break;
-                        if (keyword.lower() in ['', ' ']):
-                            print("{0} - {1}: keyword = '{2}'  (empty)... checking again.".format(search_term, location_term, keyword))
-                            break;
-                        else:
-                            browser.refresh()
-                            time.sleep(3)
-                    except:
-                        print("{0} - {1}: couldn't find keyword".format(search_term, location_term))
-                        if first_write:
-                            first_write = False
-                            with self.lock:
-                                with open('./test.txt', 'a') as file:
-                                    file.write("{0} - {1}: '{2}'".format(search_term, location_term, keyword))
-                                    file.write("\n")
-                        time.sleep(1)
-                        if i > 3:
-                            no_keyword = True
-                        if job_count >= 30:
-                            print("no more keyword and job_count over 30!")
-                            completed = True
                 else:
-                    if no_keyword:
-                        print("{0} - {1}: No keyword found... restarting.".format(search_term, location_term))
-                    else:
-                        print("Wrong search term: {0} instead of {1}... restarting.".format(keyword, search_term))
+                    print("{0} - {1}: Couldn't find any more jobs on page.".format(search_term, location_term))
+                    completed = True
                     break;
-               ############################################################################################################################
 
-                # get all jobs in a single page
-                for job in jobs:
-                    if not notification_blocked:
-                        try:
-                            wait(browser, 3)
-                            close_button = browser.find_element_by_class_name('mfp-close')
-                            close_button.click()
-                            notification_blocked = True
-                        except:
-                            pass
+            # get all jobs in a single page
+            for job in jobs:
+                if not notification_blocked:
                     try:
-                        job.click()
-                        job_count += 1
-                    except:
-                        print("Problem clicking on job.")
-                        job_failures += 1
-
-                    time.sleep(5) # wait for job description to load
-
-                    try:
-                        job_pages.append(browser.page_source) # data collection step
-                    except:
-                        print("Problem appending page source.")
-
-                    time.sleep(2)
-
-                if pages_searched % 10 == 0:
-                    print("{0} - {1}: mined {2} jobs".format(search_term, location_term, job_count))
-
-                if not self.all_pages:
-                    page_count += 1
-
-                # get the next page of search results
-                for i in range(5):
-                    try:
-                        if browser.find_element_by_class_name('next').find_element_by_class_name('disabled'):
-                            print("found disabled button")
-                            browser.refresh()
-                            time.sleep(3)
+                        wait(browser, 3)
+                        close_button = browser.find_element_by_class_name('mfp-close')
+                        close_button.click()
+                        notification_blocked = True
                     except:
                         pass
+                try:
+                    job.click()
+                    job_count += 1
+                except:
+                    print("Problem clicking on job.")
+                    job_failures += 1
 
+                time.sleep(5) # wait for job description to load
+
+                try:
+                    job_pages.append(browser.page_source) # data collection step
+                except:
+                    print("Problem appending page source.")
+
+                time.sleep(2)
+
+            if pages_searched % 10 == 0:
+                print("{0} - {1}: mined {2} jobs".format(search_term, location_term, job_count))
+
+            if not self.all_pages:
+                page_count += 1
+
+            # get the next page of search results
+            disabled = False
+            for i in range(5):
+                try:
+                    if browser.find_element_by_class_name('next').find_element_by_class_name('disabled'):
+                        print("found disabled button")
+                        disabled = True
+                        browser.refresh()
+                        time.sleep(3)
+                except:
+                    pass
+                if not disabled:
                     try:
                         next_page = browser.find_element_by_class_name('next')
                         next_page.click()
                         break;
                     except:
-                        print("Problem getting next page")
+                        print("Couldn't Problem getting next page")
                         time.sleep(2)
 
-                else:
-                    print("got to bottom completed clause!")
-                    completed = True
-                    break;
+            else:
+                print("got to bottom completed clause!")
+                break;
 
         browser.quit()
 
@@ -302,7 +260,7 @@ class glassdoor_scraper():
     ###############################
     # main program calls directly #
     ###############################
-    def save_jobs(self, save_location="../data/raw_scrapes/glassdoor-df-{}.csv".format(arrow.now().format('MM-DD-YYYY'))):
+    def save_jobs(self, save_location="../data/scrapes/raw_scrapes/glassdoor-df-{}.csv".format(arrow.now().format('MM-DD-YYYY'))):
         if not self.df_jobs.empty:
             self.df_jobs.to_csv(save_location, index=False)
             print("Jobs data saved to {}.".format(save_location))

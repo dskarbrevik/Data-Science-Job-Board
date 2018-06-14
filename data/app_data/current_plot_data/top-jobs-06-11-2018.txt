@@ -1,0 +1,20 @@
+Data Analyst;1151
+Data Scientist;1014
+none;891
+Senior Data Scientist;133
+Senior Data Analyst;100
+Lead Data Scientist;39
+Sr. Data Scientist;38
+Data Science Intern;37
+Sr. Data Analyst;36
+Data Science Engineer;34
+Data Science Manager;30
+Director of Data Science;29
+Scientist;28
+Data Science Analyst;28
+Research Scientist;27
+Marketing Data Analyst;26
+Principal Data Scientist;26
+Business Data Analyst;23
+Data Engineer;22
+Junior Data Scientist;20
