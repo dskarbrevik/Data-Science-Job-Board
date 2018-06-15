@@ -20,9 +20,12 @@ test.example
 def create_tags():
     tags = []
     for i in range(10):
-        tags.append(html.Div([html.H1('Hi there!', style={'display':'inline-block'}),
-                              html.Button('click me!', className='job-button',
-                                          style={'borderColor':'black', 'backgroundColor':'#fff', 'width':'2%', 'fontSize':'20', 'marginBottom':'10'})]))
+        tags.append(html.Div([html.A(html.Button([html.Span('Data Scientist - Google', style={'display':'block','border':'1px solid black', 'width':'auto', 'height':'auto'}), html.Span('San Francisco, CA', style={'display':'inline','border':'1px solid black', 'width':'auto', 'height':'auto'})], className='job-button'),
+                                     href='https:/www.google.com',
+                                     target="_blank", style={'verticalAlign':'middle', 'display':'inline-block'}),
+                              html.Button('APPLIED', className='job-button', style={'backgroundColor':'#fff', 'fontSize':'12', 'marginLeft':'10',
+                                                                                    'display':'inline-block', 'verticalAlign':'middle'})],
+                              style={'verticalAlign':'middle', 'marginBottom':'10'}))
 
     return (tags)
 
@@ -30,7 +33,7 @@ def create_tags():
 # define the app
 app = dash.Dash()
 
-app.css.append_css({"https://github.com/dskarbrevik/Data-Science-Job-Board/blob/master/app/static/stylesheet.css"})
+app.css.append_css({"external_url":"https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 # app.head = [html.Link(rel='stylesheet', href='./static/stylesheet.css')]
 
