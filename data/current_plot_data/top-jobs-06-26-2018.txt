@@ -1,0 +1,93 @@
+Data Analyst;713
+Data Scientist;555
+Senior Data Scientist;90
+Data Engineer;36
+Senior Data Analyst;33
+Lead Data Scientist;24
+Scientist;22
+Junior Data Scientist;21
+Principal Data Scientist;20
+Senior Data Engineer;18
+Sr. Data Scientist;17
+Research Scientist;16
+Staff Data Scientist;15
+Senior Scientist;11
+Machine Learning Engineer;10
+Marketing Data Analyst;10
+Associate Scientist;10
+Database Developer;10
+Business Data Analyst;9
+Clinical Data Analyst;8
+Data Scientist II;8
+Jr. Data Scientist;8
+Associate Data Scientist;7
+Data Science Analyst;7
+Data Scientist, Marketing Analytics;7
+Junior Data Analyst;7
+Sr. Data Analyst;6
+Account Executive;6
+Clinical Lab Scientist;6
+Data Scientist, Junior;6
+Data Scientist I;6
+Environmental Scientist;6
+Healthcare Data Analyst;5
+Senior Machine Learning Engineer;5
+Scientist I;5
+Entry-Level Environmental Engineer;5
+Lead Data Analyst;5
+Principal Scientist;5
+Sr Data Scientist;5
+Machine Learning Scientist;5
+Data Analyst II;5
+Associate Scientist, Clinical Innovation;5
+Business Intelligence Analyst;5
+Distinguished Data Scientist;4
+Financial Data Analyst;4
+Associate Scientist, SAS Physical Chemistry;4
+Junior Software Engineer;4
+Restaurant Manager;4
+Business Intelligence Data Analyst;4
+Customer Service Representative;4
+Entry Data Scientist;4
+Mathematical Statistician - Entry/Mid-Level;4
+Senior Scientist I, Biology;4
+Computer Scientist;4
+DATA SCIENTIST;4
+Senior Quality Scientist Microbiologist;4
+Bioinformatics Scientist I;4
+Data Analyst Intern;4
+Associate Scientist-Clinical Testing;4
+Senior Business Data Analyst;4
+Data Scientist III;4
+Staff Engineer/Scientist;4
+Physical Scientist;4
+Data Scientist - Entry to Experienced Level;4
+Lead Data Engineer;4
+Senior Database Developer;4
+Data and Reporting Analyst;4
+Mathematician - Entry/Mid-Level;4
+Data Hunter/Curator;4
+Soil Scientist (Resource);4
+Scientist Pharmacovigilance;4
+Staff Environmental Scientist (Entry Level);4
+Clinical Laboratory Scientist (CLS);4
+Applied Social Scientist - Experienced Level;4
+Registered Nurse;3
+Clinical Data Scientist;3
+Sales Associate;3
+Scientist - Chemical Analysis Laboratory;3
+Entry to Mid-Level Environmental Geologist;3
+BI Data Analyst;3
+Chief Data Scientist;3
+Data Analyst I;3
+Entry-level Data Scientists;3
+Director of Data Science;3
+Compliance Data Analyst;3
+Senior Formulations Research Scientist;3
+Soil Scientist;3
+Data Science Analyst I;3
+Staff Scientist / Principal Scientist;3
+Clinical Genomic Scientist I;3
+Sr Data Analyst;3
+Entry-Level Environmental Scientist;3
+Junior&Mid-level Software Engineers;3

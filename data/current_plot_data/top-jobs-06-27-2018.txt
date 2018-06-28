@@ -1,0 +1,94 @@
+Data Scientist;708
+Data Analyst;669
+Senior Data Scientist;97
+Data Engineer;36
+Lead Data Scientist;25
+Senior Data Analyst;23
+Principal Data Scientist;21
+Senior Data Engineer;20
+Scientist;20
+Sr. Data Scientist;19
+Junior Data Scientist;17
+Staff Data Scientist;13
+Research Scientist;12
+Data Scientist II;10
+Machine Learning Engineer;10
+Jr. Data Scientist;9
+Junior Data Analyst;9
+Data Scientist I;9
+Database Developer;8
+Associate Data Scientist;8
+Associate Scientist;8
+Business Intelligence Analyst;6
+Machine Learning Scientist;6
+Clinical Data Analyst;6
+Business Data Analyst;6
+Sr Data Scientist;5
+Clinical Lab Scientist;5
+Senior Machine Learning Engineer;5
+Data Scientist, Marketing Analytics;5
+Senior Scientist;5
+Marketing Data Analyst;5
+Data Scientist, Junior;5
+Sr. Data Analyst;4
+Chief Data Scientist;4
+Entry-Level Environmental Engineer;4
+Distinguished Data Scientist;4
+SQL Database Developer;4
+Physical Scientist;4
+Big Data Engineer;4
+Data and Reporting Analyst;4
+DATA SCIENTIST;4
+Senior Database Developer;4
+Lead Data Engineer;4
+Data Scientist III;4
+Data Science Analyst;4
+Senior Business Data Analyst;4
+Lead Data Analyst;3
+Computer Scientist;3
+Business Intelligence Data Analyst;3
+Data Scientist, Product;3
+Compliance Data Analyst;3
+Environmental Scientist;3
+Soil Scientist;3
+Business/Data Analyst;3
+Analytics Consultant;3
+Research Data Scientist;3
+Scheduler;3
+Restaurant Manager;3
+Associate Scientist-Clinical Testing;3
+Sr Data Analyst;3
+Senior Principal Data Scientist;3
+Scientist I;3
+Interdisciplinary Hydrologist/Soil Scientist;3
+Soil Scientist (Resource);3
+Director of Data Science;3
+Senior Principal Scientist (Team Leader);3
+Data Scientist Intern;3
+Sales Associate;3
+Account Executive;3
+Data & Applied Scientist;3
+Senior Formulations Research Scientist;3
+Junior Software Engineer;3
+Associate Scientist, Clinical Innovation;3
+Project Scientist I;2
+Data Scientist - CA;2
+Product Data Analyst;2
+Data Scientists;2
+Financial Data Analyst;2
+Sr. Machine Learning Data Scientist;2
+Principal Scientist;2
+Systems Administrator;2
+Data Scientist - Financial Services MCL;2
+Senior Big Data Engineer;2
+Data Scientist 3;2
+Data Scientist, Analytics;2
+Business/ Data Analyst;2
+Entry Level Data Scientist;2
+Clinical Laboratory Scientist (CLS);2
+Data Analyst I (Actuarial department);2
+Data Scientist, Marketing;2
+Data Scientist, Machine Learning;2
+Senior Data Scientist - Business Analytics;2
+Store Associate - Part Time & Full Time;2
+Senior Machine Learning Scientist;2

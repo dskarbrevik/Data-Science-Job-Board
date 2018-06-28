@@ -1,0 +1,46 @@
+machine learning;3256
+sql;2310
+statistics;2045
+python;1975
+r;1539
+excel;1007
+spark;721
+hadoop;701
+tableau;638
+java;637
+c;529
+statistical analysis;489
+deep learning;468
+etl;447
+regression;427
+aws;407
+scala;338
+oracle;334
+hive;331
+classification;296
+matlab;274
+sql server;248
+nosql;247
+tensorflow;187
+javascript;170
+linux;168
+mysql;148
+time series;148
+prediction;146
+redshift;143
+pandas;128
+numpy;95
+forecast;87
+cassandra;86
+mongodb;76
+keras;66
+windows;62
+scipy;55
+postgres;55
+php;53
+julia;34
+matplotlib;30
+redis;21
+talend;14
+mahout;11
+rapidminer;5
