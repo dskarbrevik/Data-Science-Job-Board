@@ -4,4 +4,8 @@ This is a web app that presents a recommended list of Glassdoor job search resul
 
 This is the basic structure of the project:
 
-![basic project structure](./pictures/job_board_structure.png)
+![basic project structure](./pictures/job_board_structure.png?raw=true)
+
+Here's a quick demo to showcase the web app:
+
+![Job Boards Demo](./pictures/demo.gif)
